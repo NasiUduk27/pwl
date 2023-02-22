@@ -17,6 +17,14 @@ Route::get('/', function () {
     echo ("Selamat Datang");
 });
 
+Route::get('/about', function () {
+    echo ("21417220201 - Dhoriffito Diansyah Putra");
+});
+
+Route::get('/articles/{id}', function ($id) {
+    echo ("Halaman Artikel dengan ID $id");
+});
+
 
 
 
