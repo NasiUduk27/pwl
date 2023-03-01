@@ -8,7 +8,11 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ContactUsController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PengalamanController;
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +30,13 @@ Route::get('/', [HomeController::class, 'index']);
 Route::prefix('product')->group(function () {
     Route::get('/marbel', [ProductController::class, 'index']);
 });
+
+Route::get('/dashboard', [DashboardController::class, 'dashboard']);
+
+Route:: get('/profile', [ProfileController::class, 'profile']);
+
+
+Route:: get('/pengalaman', [PengalamanController::class, 'pengalaman']);
 
 Route::prefix('program')->group(function () {
     Route::get('/karir', [ProgramController::class, 'index']);
