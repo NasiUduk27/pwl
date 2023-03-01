@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/home', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index']);
 
 Route::prefix('product')->group(function () {
     Route::get('/marbel', [ProductController::class, 'index']);

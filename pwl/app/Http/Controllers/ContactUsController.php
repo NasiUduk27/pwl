@@ -13,7 +13,10 @@ class ContactUsController extends Controller
      */
     public function index()
     {
-        return "Selamat Datang di halaman Contact Us";
+        return view ('contactus', [
+            'title' => 'Contact Us',
+            'message' => "kontak berhasil"
+        ]);
     }
 
     /**
@@ -23,7 +26,10 @@ class ContactUsController extends Controller
      */
     public function create()
     {
-        return "Buat halaman Contact Us";
+        return view('contactus', [
+            'title' => 'Create',
+            'message' => "create berhasil"
+        ]);
     }
 
     /**
@@ -34,7 +40,10 @@ class ContactUsController extends Controller
      */
     public function store(Request $request)
     {
-        return "Simpan halaman Contact Us";
+        return view('contactus', [
+            'title' => 'Store',
+            'message' => "store berhasil"
+        ]);
     }
 
     /**
@@ -45,7 +54,10 @@ class ContactUsController extends Controller
      */
     public function show($id)
     {
-        return "Halaman Contact Us dengan ID $id";
+        return view('contactus', [
+            'title' => 'Show',
+            'message' => "show berhasil"
+        ]);
     }
 
     /**
@@ -56,7 +68,10 @@ class ContactUsController extends Controller
      */
     public function edit($id)
     {
-        return "Edit halaman Contact Us dengan ID $id";
+        return view('contactus', [
+            'title' => 'Edit',
+            'message' => "edit berhasil"
+        ]);
     }
 
     /**
@@ -68,7 +83,10 @@ class ContactUsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return "Update halaman Contact Us dengan ID $id";
+        return view('contactus', [
+            'title' => 'Update',
+            'message' => "update berhasil"
+        ]);
     }
 
     /**
@@ -79,6 +97,9 @@ class ContactUsController extends Controller
      */
     public function destroy($id)
     {
-        return "Hapus halaman Contact Us dengan ID $id";
+        return view('contactus', [
+            'title' => 'Destroy',
+            'message' => "destroy berhasil"
+        ]);
     }
 }

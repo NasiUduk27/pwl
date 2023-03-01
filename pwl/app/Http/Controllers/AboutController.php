@@ -8,6 +8,11 @@ class AboutController extends Controller
 {
     public function about()
     {
-        return "2141722021 - Dhoriffito Diansyah Putra";
+        return view('about', [
+            'title' => 'About',
+            'name' => 'Dhoriffito',
+            'email' => 'admim123@gmail.com',
+        ]);
+
     }
 }

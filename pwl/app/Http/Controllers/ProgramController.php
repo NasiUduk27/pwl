@@ -7,16 +7,31 @@ use Illuminate\Http\Request;
 class ProgramController extends Controller
 {
     public function index() {
-        return "<h1>Halaman Program</h1>
-        
-        <ol>
+        return view('program', [
+            'title' => 'Karir',
+            'program' => ['Karir', 'Magang', 'Kunjungan Industri']
+        ]);
+    }
 
-        <li><a href='https://www.educastudio.com/program/karir'>Program 1</a></li>
-        <li><a href='https://www.educastudio.com/program/magang'>Program 2</a></li>
-        <li><a href='https://www.educastudio.com/program/kunjungan-industri'>Program 3</a></li>
-        
-        </ol>";
+    public function Karir() {
+        return view('program', [
+            'title' => 'Karir',
+            'program' => ['Karir', 'Magang', 'Kunjungan Industri']
+        ]);
+    }
 
-        
+    public function Magang() {
+        return view('program', [
+            'title' => 'Magang',
+            'program' => ['Karir', 'Magang', 'Kunjungan Industri']
+        ]);
+    }
+
+    public function KunjunganIndustri() {
+        return view('program', [
+            'title' => 'Kunjungan Industri',
+            'program' => ['Karir', 'Magang', 'Kunjungan Industri']
+        ]);
     }
 }
+
