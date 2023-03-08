@@ -335,6 +335,15 @@
           </li>
 
           <li class="nav-item">
+            <a href="/articles" class="nav-link">
+              <i class="nav-icon fas fa-columns"></i>
+              <p>
+                Artikel Buku
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
             <a href="/hobies" class="nav-link">
               <i class="nav-icon fas fa-columns"></i>
               <p>
