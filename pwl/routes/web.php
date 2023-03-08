@@ -9,6 +9,7 @@ use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HobyController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PengalamanController;
 use Illuminate\Support\Facades\Route;
@@ -57,6 +58,8 @@ Route::get('/articles/{id}', function ($id) {
 });
 
 Route::get('/articles', [ArticleController::class, 'index']);
+
+Route::get('/hobies', [HobyController::class, 'index']);
 
 
 
