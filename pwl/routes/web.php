@@ -56,5 +56,7 @@ Route::get('/articles/{id}', function ($id) {
     echo ("Halaman Artikel dengan ID $id");
 });
 
+Route::get('/articles', [ArticleController::class, 'index']);
+
 
 
