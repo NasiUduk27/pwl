@@ -333,6 +333,33 @@
               </p>
             </a>
           </li>
+
+          <li class="nav-item">
+            <a href="/hobies" class="nav-link">
+              <i class="nav-icon fas fa-columns"></i>
+              <p>
+                Hobi
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="/families" class="nav-link">
+              <i class="nav-icon fas fa-columns"></i>
+              <p>
+                Keluarga
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="/courses" class="nav-link">
+              <i class="nav-icon fas fa-columns"></i>
+              <p>
+                Mata Kuliah
+              </p>
+            </a>
+          </li>
           {{-- <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon far fa-envelope"></i>

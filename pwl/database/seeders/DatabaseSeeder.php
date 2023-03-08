@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             ArticleSeeder::class,
             HobySeeder::class,
             FamilySeeder::class,
+            CourseSeeder::class,
         ]);
 
 
