@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProductController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\FamilyController;
 use App\Http\Controllers\HobyController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PengalamanController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -28,44 +30,53 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
 
-Route::prefix('product')->group(function () {
-    Route::get('/marbel', [ProductController::class, 'index']);
+
+Auth::routes();
+
+Route::get('logout',[LoginController::class, 'logout']);
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/', [HomeController::class, 'index']);
+
+    Route::prefix('product')->group(function () {
+        Route::get('/marbel', [ProductController::class, 'index']);
+    });
+    
+    Route::get('/dashboard', [DashboardController::class, 'dashboard']);
+    
+    Route:: get('/profile', [ProfileController::class, 'profile']);
+    
+    
+    Route:: get('/pengalaman', [PengalamanController::class, 'pengalaman']);
+    
+    Route::prefix('program')->group(function () {
+        Route::get('/karir', [ProgramController::class, 'index']);
+    });
+    
+    Route::get('/news/{news}', [NewsController::class, 'show']);
+    
+    Route::get('/aboutus', [PageController::class, 'AboutUs']);
+    
+    Route::resource('contactus', ContactUsController::class);
+    
+    Route::get('/about', [AboutController::class, 'about']);
+    
+    Route::get('/articles/{id}', [ArticleController::class, 'articles']);
+    
+    Route::get('/articles/{id}', function ($id) {
+        echo ("Halaman Artikel dengan ID $id");
+    });
+    
+    Route::get('/articles', [ArticleController::class, 'index']);
+    
+    Route::get('/hobies', [HobyController::class, 'index']);
+    
+    Route::get('/families', [FamilyController::class, 'index']);
+    
+    Route::get('/courses', [CourseController::class, 'index']);
+    
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 });
-
-Route::get('/dashboard', [DashboardController::class, 'dashboard']);
-
-Route:: get('/profile', [ProfileController::class, 'profile']);
-
-
-Route:: get('/pengalaman', [PengalamanController::class, 'pengalaman']);
-
-Route::prefix('program')->group(function () {
-    Route::get('/karir', [ProgramController::class, 'index']);
-});
-
-Route::get('/news/{news}', [NewsController::class, 'show']);
-
-Route::get('/aboutus', [PageController::class, 'AboutUs']);
-
-Route::resource('contactus', ContactUsController::class);
-
-Route::get('/about', [AboutController::class, 'about']);
-
-Route::get('/articles/{id}', [ArticleController::class, 'articles']);
-
-Route::get('/articles/{id}', function ($id) {
-    echo ("Halaman Artikel dengan ID $id");
-});
-
-Route::get('/articles', [ArticleController::class, 'index']);
-
-Route::get('/hobies', [HobyController::class, 'index']);
-
-Route::get('/families', [FamilyController::class, 'index']);
-
-Route::get('/courses', [CourseController::class, 'index']);
-
 
 
