@@ -59,7 +59,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input name = "validation_password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Retype password">
+          <input name = "password_confirmation" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Retype password">
           @error('password') 
             <p>{{$message}}</p>    
           @enderror
