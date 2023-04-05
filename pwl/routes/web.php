@@ -13,6 +13,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FamilyController;
 use App\Http\Controllers\HobyController;
+use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PengalamanController;
 use Illuminate\Support\Facades\Auth;
@@ -75,6 +76,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/families', [FamilyController::class, 'index']);
     
     Route::get('/courses', [CourseController::class, 'index']);
+
+    Route::resource('/mahasiswa',MahasiswaController::class);
     
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 });

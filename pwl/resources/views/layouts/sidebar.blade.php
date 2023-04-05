@@ -310,7 +310,7 @@
             </a>
           </li> --}}
           <li class="nav-item">
-            <a href="/dashboard" class="nav-link">
+            <a href="{{url('/dashboard')}}" class="nav-link">
               <i class="nav-icon fas fa-columns"></i>
               <p>
                 Dashboard
@@ -318,7 +318,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/profile" class="nav-link">
+            <a href="{{url('/profile')}}" class="nav-link">
               <i class="nav-icon fas fa-columns"></i>
               <p>
                 Profile
@@ -326,7 +326,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/pengalaman" class="nav-link">
+            <a href="{{url('/pengalaman')}}" class="nav-link">
               <i class="nav-icon fas fa-columns"></i>
               <p>
                 Pengalaman Kuliah
@@ -335,7 +335,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="/articles" class="nav-link">
+            <a href="{{url('/articles')}}" class="nav-link">
               <i class="nav-icon fas fa-columns"></i>
               <p>
                 Artikel Buku
@@ -344,7 +344,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="/hobies" class="nav-link">
+            <a href="{{url('/hobies')}}" class="nav-link">
               <i class="nav-icon fas fa-columns"></i>
               <p>
                 Hobi
@@ -353,7 +353,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="/families" class="nav-link">
+            <a href="{{url('/families')}}" class="nav-link">
               <i class="nav-icon fas fa-columns"></i>
               <p>
                 Keluarga
@@ -362,10 +362,19 @@
           </li>
 
           <li class="nav-item">
-            <a href="/courses" class="nav-link">
+            <a href="{{url('/courses')}}" class="nav-link">
               <i class="nav-icon fas fa-columns"></i>
               <p>
                 Mata Kuliah
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{url('/mahasiswa')}}" class="nav-link">
+              <i class="nav-icon fas fa-columns"></i>
+              <p>
+                Mahasiswa
               </p>
             </a>
           </li>
