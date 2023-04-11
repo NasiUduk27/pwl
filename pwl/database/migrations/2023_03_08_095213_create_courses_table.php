@@ -16,9 +16,10 @@ return new class extends Migration
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
             $table->String('name');
-            $table->integer('sks');
-            $table->integer('semester');
+            $table->String('sks');
+            $table->String('semester');
             $table->timestamps();
+
         });
     }
 

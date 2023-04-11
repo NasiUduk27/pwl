@@ -75,7 +75,9 @@ Route::middleware(['auth'])->group(function () {
     
     Route::get('/families', [FamilyController::class, 'index']);
     
-    Route::get('/courses', [CourseController::class, 'index']);
+    // Route::get('/courses', [CourseController::class, 'index']);
+
+    Route::resource('/courses',CourseController::class);
 
     Route::resource('/mahasiswa',MahasiswaController::class);
     
