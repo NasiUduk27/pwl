@@ -71,7 +71,9 @@ Route::middleware(['auth'])->group(function () {
     
     Route::get('/articles', [ArticleController::class, 'index']);
     
-    Route::get('/hobies', [HobyController::class, 'index']);
+    // Route::get('/hobies', [HobyController::class, 'index']);
+
+    Route::resource('/hobies',HobyController::class);
     
     Route::get('/families', [FamilyController::class, 'index']);
     
