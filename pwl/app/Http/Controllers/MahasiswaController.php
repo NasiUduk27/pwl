@@ -99,6 +99,12 @@ class MahasiswaController extends Controller
         ->with('url_form', url('/mahasiswa/'.$id));
     }
 
+    public function showkhs(MahasiswaModel $mahasiswa, $id){
+        $mahasiswa = MahasiswaModel::with('kelas','matakuliah')->find($id);
+        $khs = $mahasiswa->matakuliah()->withPivot('nilai')->get();
+        return view('mahasiswa.khs')->with('mahasiswa', $mahasiswa)->with('khs', $khs);
+    }
+
     /**
      * Update the specified resource in storage.
      *

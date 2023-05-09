@@ -113,7 +113,7 @@
                             <select type="text" class="form-control @error('kelas') is-invalid @enderror" id="kelas"
                                 name="kelas">
                             @foreach($kelas as $kls)
-                                <option value="{{ $kls->id }}" {{ ($mhs->kelas_id == $kls->id)? 'selected' : '' }}>{{ $kls->nama_kelas }}</option>
+                                <option value="{{ $kls->id }}" {{ ($kls->kelas_id == $kls->id)? 'selected' : '' }}>{{ $kls->nama_kelas }}</option>
                             @endforeach
                             </select>
                             @error('kelas')
