@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Family;
+use App\Models\FamilyModel;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -15,37 +16,37 @@ class FamilySeeder extends Seeder
      */
     public function run()
     {
-        Family::create([
+        FamilyModel::create([
             'name' => 'Budi',
             'telepon' => '08123456789',
             'hubungan' => 'Ayah'
         ]);
 
-        Family::create([
+        FamilyModel::create([
             'name' => 'Siti',
             'telepon' => '08123456789',
             'hubungan' => 'Ibu'
         ]);
 
-        Family::create([
+        FamilyModel::create([
             'name' => 'Rudi',
             'telepon' => '08123456789',
             'hubungan' => 'Anak'
         ]);
 
-        Family::create([
+        FamilyModel::create([
             'name' => 'Rina',
             'telepon' => '08123456789',
             'hubungan' => 'Anak'
         ]);
 
-        Family::create([
+        FamilyModel::create([
             'name' => 'Rudi',
             'telepon' => '08123456789',
             'hubungan' => 'Anak'
         ]);
 
-        Family::create([
+        FamilyModel::create([
             'name' => 'Rina',
             'telepon' => '08123456789',
             'hubungan' => 'Anak'

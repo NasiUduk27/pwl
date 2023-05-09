@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kelas;
 use App\Models\Mahasiswa;
 use App\Models\MahasiswaModel;
 use Illuminate\Http\Request;
@@ -15,7 +16,7 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        $mhs = MahasiswaModel::all();
+        $mhs = MahasiswaModel::with('kelas')->get();
         return view('mahasiswa.mahasiswa')->with('mhs', $mhs);
     }
 
@@ -26,7 +27,11 @@ class MahasiswaController extends Controller
      */
     public function create()
     {
-        return view('mahasiswa.create_mahasiswa')->with('url_form', url('/mahasiswa'));
+        $kelas = Kelas::all();
+        return view('mahasiswa.create_mahasiswa', [
+            'url_form' => url('/mahasiswa'),
+            'kelas'=> $kelas
+        ]);
     }
 
     /**
@@ -45,9 +50,24 @@ class MahasiswaController extends Controller
             'tanggal_lahir' => 'required|date',
             'alamat' => 'required|string|max:255',
             'hp' => 'required|digits_between:6,15',
+            
         ]);
 
-        $data = MahasiswaModel::create($request->except(['_token']));
+        $mhs = new MahasiswaModel();
+        $mhs->nim = $request->get('nim');
+        $mhs->nama = $request->get('nama');
+        $mhs->jk = $request->get('jk');
+        $mhs->tempat_lahir = $request->get('tempat_lahir');
+        $mhs->tanggal_lahir = $request->get('tanggal_lahir');
+        $mhs->alamat = $request->get('alamat');
+        $mhs->hp = $request->get('hp');
+
+        $kelas = new Kelas;
+        $kelas->id = $request->get('kelas');
+
+        $mhs->kelas()->associate($kelas);
+        $mhs->save();
+
         return redirect('mahasiswa')->with('success', 'Data mahasiswa berhasil ditambahkan');
 
     }
@@ -71,10 +91,11 @@ class MahasiswaController extends Controller
      */
     public function edit($id)
     {
-        $mahasiswa = MahasiswaModel::find($id);
+        $mhs = MahasiswaModel::find($id);
 
         return view('mahasiswa.create_mahasiswa')
-        ->with('mhs', $mahasiswa)
+        ->with('mhs', $mhs)
+        ->with('kelas', Kelas::all())
         ->with('url_form', url('/mahasiswa/'.$id));
     }
 
@@ -97,7 +118,21 @@ class MahasiswaController extends Controller
             'hp' => 'required|digits_between:6,15',
         ]);
 
-        $data = MahasiswaModel::where('id', '=', $id)->update($request->except(['_token', '_method']));
+        $mhs = MahasiswaModel::find($id);
+        $mhs->nim = $request->get('nim');
+        $mhs->nama = $request->get('nama');
+        $mhs->jk = $request->get('jk');
+        $mhs->tempat_lahir = $request->get('tempat_lahir');
+        $mhs->tanggal_lahir = $request->get('tanggal_lahir');
+        $mhs->alamat = $request->get('alamat');
+        $mhs->hp = $request->get('hp');
+       
+
+        $kelas = new Kelas;
+        $kelas->id = $request->get('kelas');
+
+        $mhs->kelas()->associate($kelas);
+        $mhs->save();
         return redirect('mahasiswa')->with('success', 'Data mahasiswa berhasil diedit');
     }
 

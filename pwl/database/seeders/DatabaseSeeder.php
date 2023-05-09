@@ -19,6 +19,8 @@ class DatabaseSeeder extends Seeder
             HobySeeder::class,
             FamilySeeder::class,
             CourseSeeder::class,
+            KelasSeeder::class,
+            UserSeeder::class,
         ]);
 
 

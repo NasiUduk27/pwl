@@ -44,7 +44,7 @@
                         <div class="form-group">
                             <label for="nim">NIM</label>
                             <input type="text" class="form-control @error('nim') is-invalid @enderror" id="nim"
-                                name="nim" value="{{ isset($mhs) ? $mhs->nim : old('nim') }}">
+                                name="nim" value="{{ isset($mhs)? $mhs->nim : old('nim') }}">
                             @error('nim')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -108,6 +108,19 @@
                             @enderror
                         </div>
 
+                        <div class="form-group">
+                            <label for="kelas">Kelas</label>
+                            <select type="text" class="form-control @error('kelas') is-invalid @enderror" id="kelas"
+                                name="kelas">
+                            @foreach($kelas as $kls)
+                                <option value="{{ $kls->id }}" {{ ($mhs->kelas_id == $kls->id)? 'selected' : '' }}>{{ $kls->nama_kelas }}</option>
+                            @endforeach
+                            </select>
+                            @error('kelas')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
                         <button type="submit" class="btn btn-primary btn-block">Submit</button>
                     </form>
 
@@ -127,7 +140,6 @@
     <!-- /.content-wrapper -->
     @push('custom_js')
         <script>
-            alert('Selamat Datang');
         </script>
     @endpush
 @endsection

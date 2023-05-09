@@ -10,6 +10,7 @@ class MahasiswaModel extends Model
     use HasFactory;
 
     protected $table = 'mahasiswas';
+    protected $primaryKey = 'id';
 
     protected $fillable = [
         'nim',
@@ -19,5 +20,10 @@ class MahasiswaModel extends Model
         'tanggal_lahir',
         'alamat',
         'hp',
+        'kelas_id',
     ];
+
+    public function kelas(){
+        return $this->belongsTo(Kelas::class);
+    }
 }
