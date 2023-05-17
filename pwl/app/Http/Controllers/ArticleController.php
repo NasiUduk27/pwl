@@ -24,6 +24,8 @@ class ArticleController extends Controller
     }
 
     public function store(Request $request){
+        $image_name = null;
+
         if ($request->file('image')) {
             $image_name = $request->file('image')->store('images', 'public');
         }
