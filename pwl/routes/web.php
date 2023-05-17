@@ -63,13 +63,15 @@ Route::middleware(['auth'])->group(function () {
     
     Route::get('/about', [AboutController::class, 'about']);
     
-    Route::get('/articles/{id}', [ArticleController::class, 'articles']);
+    // Route::get('/articles/{id}', [ArticleController::class, 'articles']);
     
-    Route::get('/articles/{id}', function ($id) {
-        echo ("Halaman Artikel dengan ID $id");
-    });
+    // Route::get('/articles/{id}', function ($id) {
+    //     echo ("Halaman Artikel dengan ID $id");
+    // });
     
     Route::get('/articles', [ArticleController::class, 'index']);
+
+    Route::resource('articles',ArticleController::class);
     
     // Route::get('/hobies', [HobyController::class, 'index']);
 
