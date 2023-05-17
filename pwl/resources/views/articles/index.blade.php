@@ -42,10 +42,9 @@
                 <thead>
                     <tr>
                         <td>Title</td>
-                        <td>Author</td>
                         <td>Content</td>
-                        <td>Genre</td>
-                        <td>Rating</td>
+                        <td>Image</td>
+                        <td>Action</td>
                     </tr>
                 </thead>
 
@@ -53,10 +52,8 @@
                     @foreach ($articles as $articles)
                         <tr>
                             <td>{{ $articles->title }}</td>
-                            <td>{{ $articles->author }}</td>
                             <td>{{ $articles->content }}</td>
-                            <td>{{ $articles->genre }}</td>
-                            <td>{{ $articles->rating }}</td>
+                            <td><img width="150px" src="{{ asset('storage/' . $articles->featured_image) }}"></td>
                         </tr>
 
                         

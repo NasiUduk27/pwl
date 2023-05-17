@@ -72,6 +72,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/articles', [ArticleController::class, 'index']);
 
     Route::resource('articles',ArticleController::class);
+
     
     // Route::get('/hobies', [HobyController::class, 'index']);
 
