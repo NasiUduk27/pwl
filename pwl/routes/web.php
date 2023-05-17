@@ -69,10 +69,11 @@ Route::middleware(['auth'])->group(function () {
     //     echo ("Halaman Artikel dengan ID $id");
     // });
     
-    Route::get('/articles', [ArticleController::class, 'index']);
+    Route::get('articles/cetak_pdf', [ArticleController::class, 'cetak_pdf']);
 
     Route::resource('articles',ArticleController::class);
 
+    
     
     // Route::get('/hobies', [HobyController::class, 'index']);
 
