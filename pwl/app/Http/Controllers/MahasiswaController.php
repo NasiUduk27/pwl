@@ -6,6 +6,8 @@ use App\Models\Kelas;
 use App\Models\Mahasiswa;
 use App\Models\MahasiswaModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use PDF;
 
 class MahasiswaController extends Controller
 {
@@ -50,6 +52,7 @@ class MahasiswaController extends Controller
             'tanggal_lahir' => 'required|date',
             'alamat' => 'required|string|max:255',
             'hp' => 'required|digits_between:6,15',
+            'foto' => 'mimes:jpg,jpeg,png,gif'
             
         ]);
 
@@ -62,9 +65,15 @@ class MahasiswaController extends Controller
         $mhs->alamat = $request->get('alamat');
         $mhs->hp = $request->get('hp');
 
+        if ($request->file('foto')) {
+            $link = $request->file('foto')->store('foto', 'public');
+        }
+
+        $mhs->foto = $link;
+
         $kelas = new Kelas;
         $kelas->id = $request->get('kelas');
-
+        
         $mhs->kelas()->associate($kelas);
         $mhs->save();
 
@@ -122,6 +131,7 @@ class MahasiswaController extends Controller
             'tanggal_lahir' => 'required|date',
             'alamat' => 'required|string|max:255',
             'hp' => 'required|digits_between:6,15',
+            'foto' => 'mimes:jpg,png,jpeg,gif'
         ]);
 
         $mhs = MahasiswaModel::find($id);
@@ -133,6 +143,15 @@ class MahasiswaController extends Controller
         $mhs->alamat = $request->get('alamat');
         $mhs->hp = $request->get('hp');
        
+        if($request->file('foto')){
+            if($mhs->foto && file_exists(storage_path('app/public/' . $mhs->foto))){
+                Storage::delete('public/' . $mhs->foto);
+            }
+
+            $link = $request->file('foto')->store('foto', 'public');
+            $mhs->foto = $link;
+
+        }
 
         $kelas = new Kelas;
         $kelas->id = $request->get('kelas');
@@ -152,5 +171,13 @@ class MahasiswaController extends Controller
     {
         MahasiswaModel::where('id', '=', $id)->delete();
         return redirect('mahasiswa')->with('success', 'Data mahasiswa berhasil dihapus');
+    }
+
+    public function pdf($id){
+        $mahasiswa = MahasiswaModel::with('kelas', 'matakuliah')->find($id);
+        $khs = $mahasiswa->matakuliah()->withPivot('nilai')->get();
+        $pdf = PDF::loadView('mahasiswa.cetak_pdf', ['mahasiswa' => $mahasiswa, 'khs' => $khs]);
+        return $pdf->stream();
+
     }
 }

@@ -13,14 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('articles', function (Blueprint $table) {
-            $table->id();
-            $table->String('title');
-            $table->String('author');
-            $table->text('content');
-            $table->String('genre');
-            $table->integer('rating');
-            $table->timestamps();
+        Schema::table('mahasiswas', function (Blueprint $table) {
+              $table->string('foto')->after('nama')->nullable();
+            //
         });
     }
 
@@ -31,6 +26,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('articles');
+        Schema::table('mahasiswa', function (Blueprint $table) {
+            //
+        });
     }
 };

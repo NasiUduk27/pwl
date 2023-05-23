@@ -90,6 +90,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/mahasiswa',MahasiswaController::class);
 
     Route::get('mahasiswa/{id}/khs', [MahasiswaController::class, 'showkhs']);
+
+    Route::get('mahasiswa/{id}/cetakpdf', [MahasiswaController::class, 'pdf']);
     
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 });

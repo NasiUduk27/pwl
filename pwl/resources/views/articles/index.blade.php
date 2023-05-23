@@ -55,8 +55,6 @@
                             <td>{{ $articles->content }}</td>
                             <td><img width="150px" src="{{ asset('storage/' . $articles->featured_image) }}"></td>
                         </tr>
-
-                        
                     @endforeach
                 </tbody>
 

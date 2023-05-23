@@ -37,7 +37,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="{{ $url_form }}">
+                    <form method="POST" action="{{ $url_form }}" enctype="multipart/form-data">
                         @csrf
                         {!! isset($mhs) ? method_field('PUT') : '' !!}
 
@@ -117,6 +117,15 @@
                             @endforeach
                             </select>
                             @error('kelas')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="foto">Foto</label>
+                            <input type="file" class="form-control @error('foto') is-invalid @enderror" id="foto"
+                                name="foto">
+                            @error('foto')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>

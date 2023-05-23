@@ -46,6 +46,7 @@
                                 <th>No</th>
                                 <th>NIM</th>
                                 <th>Nama</th>
+                                <th>Foto</th>
                                 <th>JK</th>
                                 <th>HP</th>
                                 <th>Kelas</th>
@@ -59,6 +60,7 @@
                                         <td>{{ ++$i }}</td>
                                         <td>{{ $m->nim }}</td>
                                         <td>{{ $m->nama }}</td>
+                                        <td><img src="{{asset('/storage/' . $m->foto) }}" alt="" width="100" height="100" style="overflow: hidden;"></td>
                                         <td>{{ $m->jk }}</td>
                                         <td>{{ $m->hp }}</td>
                                         <td>{{ $m->kelas->nama_kelas}}</td>
